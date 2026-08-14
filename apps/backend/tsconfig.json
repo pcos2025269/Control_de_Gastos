@@ -22,7 +22,7 @@
       "@controllers/*": ["controllers/*"],
       "@middlewares/*": ["middlewares/*"],
       "@routes/*": ["routes/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts"],
