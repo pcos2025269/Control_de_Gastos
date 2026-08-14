@@ -6,4 +6,4 @@ create table if not exists users (
     created_at timestamp default current_timestamp
 );
 
-created index if not exists idx_users_username on users(username);
+create index if not exists idx_users_username on users(username);
