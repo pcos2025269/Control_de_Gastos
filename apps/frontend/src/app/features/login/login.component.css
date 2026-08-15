@@ -1,0 +1,183 @@
+/* ============================================================================
+   (este se cambia)
+   Pantalla de login.
+
+   Elemento de firma: la tarjeta tiene un doble borde -- uno estatico y uno
+   con degradado que se activa (gira suavemente) cuando algun campo del
+   formulario recibe foco, mediante :focus-within. La idea es sugerir, con
+   un gesto minimo, "autenticacion en curso" sin caer en una animacion
+   decorativa desconectada del contenido.
+   ============================================================================ */
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+}
+
+.login-card {
+  position: relative;
+  background: var(--surface);
+  padding: 2.75rem 2.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-elevated);
+  width: 100%;
+  max-width: 400px;
+  isolation: isolate;
+}
+
+/* Anillo con degradado, oculto por defecto; se revela y gira cuando algun
+   input del formulario tiene foco. Vive detras de la tarjeta (-z-index)
+   para no interferir con el contenido ni con la interaccion del mouse. */
+.login-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), var(--accent));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  animation: rotate-ring 3.5s linear infinite;
+  z-index: -1;
+}
+
+
+@keyframes rotate-ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+h1 {
+  margin: 0 0 0.3rem 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0 0 2rem 0;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.field {
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+input {
+  padding: 0.7rem 0.85rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input::placeholder {
+  color: var(--text-faint);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.field-error {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--danger);
+}
+
+.alert-error {
+  background: var(--danger-soft);
+  border: 1px solid rgba(251, 113, 133, 0.3);
+  color: var(--danger);
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-bottom: 1.1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--accent);
+  color: #0a0f1e;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.hint {
+  margin-top: 1.75rem;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.hint p {
+  margin: 0 0 0.5rem 0;
+}
+
+.hint ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Credenciales de prueba con acento monoespaciado: refuerza la idea de
+   "esto es un token/credencial", coherente con el resto del sistema. */
+.hint li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.6rem;
+  width: fit-content;
+}

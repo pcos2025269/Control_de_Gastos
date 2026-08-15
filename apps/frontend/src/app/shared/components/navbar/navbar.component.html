@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <span class="brand">Sistema de Autenticacion</span>
+  @if (currentUser(); as user) {
+    <div class="session-info">
+      <span class="user-chip">{{ user.username }} · {{ user.role }}</span>
+      <button (click)="onLogout()">Cerrar sesion</button>
+    </div>
+  }
+</nav>

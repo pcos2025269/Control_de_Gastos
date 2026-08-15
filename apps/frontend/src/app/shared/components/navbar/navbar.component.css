@@ -1,0 +1,73 @@
+/* ============================================================================
+   (este se cambia)
+   Barra de navegacion compartida.
+
+   El chip de usuario se estiliza como una credencial/keycard: fondo
+   monoespaciado, un punto de estado en verde menta (sesion activa) y el
+   rol en mayusculas como si fuera un nivel de acceso. Refuerza visualmente
+   el tema de autenticacion/autorizacion del sistema.
+   ============================================================================ */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.75rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.session-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+}
+
+.user-chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 0 3px var(--accent-2-soft);
+  flex-shrink: 0;
+}
+
+button {
+  padding: 0.5rem 0.95rem;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+button:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}

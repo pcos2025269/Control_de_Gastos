@@ -1,0 +1,41 @@
+/* ============================================================================
+   (este se cambia)
+   Panel de administracion.
+
+   Misma estructura visual que el panel de usuario, pero con el acento
+   menta (--accent-2) en vez de indigo, para que el color distinga de un
+   vistazo en que tipo de panel esta el usuario -- sin depender solo del
+   texto del titulo.
+   ============================================================================ */
+
+.panel {
+  max-width: 640px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--accent-2);
+}
+
+.panel > p:not(.placeholder) {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding-left: 0.9rem;
+}
+
+.placeholder {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.25rem;
+  margin-top: 1.75rem;
+  background: var(--surface);
+}
